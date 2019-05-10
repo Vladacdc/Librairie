@@ -1,6 +1,5 @@
 const express = require('express');
 const authRoutes = require('./routes/auth-routes');
-// eslint-disable-next-line no-unused-vars
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
