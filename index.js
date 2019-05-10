@@ -39,7 +39,13 @@ app.use("/auth", authRoutes);
 
 //root route
 app.get("/", (req, res) => {
+if(req.user){
+  res.render("index",{username: req.user.username});
+}else{
   res.render("index");
+}
+
+
 });
 
 app.listen(3000, () => {
