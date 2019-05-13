@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-sm-0">
-  <a class="navbar-brand mr-5 mylogo" href="#">Librairie</a>
+  <a class="navbar-brand mr-md-5 mylogo" href="#">Librairie</a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,22 +7,23 @@
   <div class="navbar-collapse collapse " id="navbarsExample03">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link h4" href="#">Home</a>
+        <a class="nav-link h4" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link h4" href="#">Shop</a>
+        <a class="nav-link h4" href="/shop/">Shop</a>
       </li>
     </ul>
     <% if(user){%>
     <div class="navbar-nav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link h6" href="#">
             Cart<i class="fas fa-shopping-cart"></i>
+            <span class="align-text-bottom badge badge-pill badge-info">0</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/auth/logout">
+          <a class="nav-link h6" href="/auth/logout">
             Log out<i class="fas fa-sign-out-alt"></i>
           </a>
         </li>
@@ -33,7 +34,7 @@
     </div>
     <% } else {%>
     <div class="navbar-nav">
-      <a href="/auth/google" class="nav-link">
+      <a href="/auth/google" class="nav-link h6">
         Sign in<i class="fas fa-sign-in-alt"></i>
       </a>
     </div>

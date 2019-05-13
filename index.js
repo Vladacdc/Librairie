@@ -7,6 +7,7 @@ const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require('passport');
 const path = require('path');
+const shopRoutes = require('./routes/shop-routes');
 
 var app = express();
 
@@ -24,8 +25,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/public',express.static(path.join(__dirname, 'public')));
-app.use('/mdbootstrap',express.static(path.join(__dirname, 'node_modules/mdbootstrap')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/mdbootstrap', express.static(path.join(__dirname, 'node_modules/mdbootstrap')));
 
 //connect to db
 mongoose.connect(
@@ -39,6 +40,7 @@ mongoose.connect(
 
 //set up routes
 app.use("/auth", authRoutes);
+app.use("/shop", shopRoutes);
 
 //root route
 app.get("/", (req, res) => {
