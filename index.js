@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require('passport');
+const path = require('path');
 
 var app = express();
 
@@ -23,10 +24,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/public',express.static(path.join(__dirname, 'public')));
+app.use('/mdbootstrap',express.static(path.join(__dirname, 'node_modules/mdbootstrap')));
+
 //connect to db
 mongoose.connect(
-  keys.mongodb.dbURI,
-  {
+  keys.mongodb.dbURI, {
     useNewUrlParser: true
   },
   () => {
@@ -39,13 +42,9 @@ app.use("/auth", authRoutes);
 
 //root route
 app.get("/", (req, res) => {
-if(req.user){
-  res.render("index",{username: req.user.username});
-}else{
-  res.render("index");
-}
-
-
+  res.render("index", {
+    user: req.user
+  });
 });
 
 app.listen(3000, () => {

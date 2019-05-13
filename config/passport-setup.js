@@ -14,8 +14,7 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
-  new googleAuth(
-    {
+  new googleAuth({
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret,
       callbackURL: "/auth/google/callback"
@@ -23,22 +22,22 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       User.findOne({
         googleId: profile.id
-      })
-        .then(currentUser => {
-          console.log("user is: " + currentUser);
-          done(null, currentUser);
-        })
-        .catch(() => {
-          new User({
+      }, (err, user) => {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          user = new User({
             username: profile.displayName,
-            googleId: profile.id
-          })
-            .save()
-            .then(newUser => {
-              console.log("SYSTEM: new user created" + newUser);
-              done(null, newUser);
-            });
-        });
-    }
-  )
-);
+            googleId: profile.id,
+            image: profile._json.picture
+          });
+          user.save((err, user) => {
+            if (err) console.log(err);
+            return done(err, user);
+          });
+        } else {
+          return done(err, user);
+        }
+      });
+    }));
