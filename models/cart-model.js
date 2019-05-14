@@ -21,4 +21,27 @@ module.exports = function Cart(oldCart) {
         }
         return arr;
     };
+
+    this.remove=(id)=>{
+        var storedItem = this.items[id];
+        if (!storedItem) return;
+        this.totalPrice-=storedItem.price;
+        this.totalQty-=storedItem.qty;
+        delete this.items[id];
+    };
+
+    this.setQty=(newQty,id)=>{
+      var storedItem = this.items[id];
+      if (!storedItem) return;
+
+      this.totalPrice-=storedItem.price;
+      this.totalQty-=storedItem.qty;
+
+      storedItem.qty=newQty;
+      storedItem.price=storedItem.item.price * storedItem.qty
+
+      this.totalQty+=storedItem.qty;
+      this.totalPrice+=storedItem.price;
+
+    };
 };

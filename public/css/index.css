@@ -7,3 +7,7 @@
   font-family: 'Dancing Script', cursive;
   font-size: 3em;
 }
+
+#product-img{
+  max-height: 300px;
+}

@@ -13,6 +13,10 @@ var app = express();
 
 //setup view engine
 app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 
 app.use(
   cookieSession({
@@ -23,11 +27,14 @@ app.use(
 
 //initialize passport
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session({
+  saveUninitialized: true,
+  resave: true
+}));
 
-app.use((req,res,next)=>{
-    res.locals.session=req.session;
-    next();
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
 });
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
