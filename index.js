@@ -52,7 +52,6 @@ app.get("/", (req, res) => {
   res.render("index", {
     user: req.user,
     home: "active",
-    shop: ""
   });
 });
 

@@ -6,10 +6,10 @@
 
     <div class="navbar-collapse collapse " id="navbarDrop">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item <%= home || '' %>">
+            <li class="nav-item <%= (locals.home)?home:'' %>">
                 <a class="nav-link h4 mb-0" href="/">Home</a>
             </li>
-            <li class="nav-item <%= shop %>">
+            <li class="nav-item <%= (locals.shop)?shop:'' %>">
                 <a class="nav-link h4 mb-0" href="/shop/">Shop</a>
             </li>
         </ul>
@@ -20,7 +20,7 @@
                     <a class="nav-link h6 mb-0" href="#">
                         Cart<i class="fas fa-shopping-cart"></i>
                         <span class="align-text-bottom badge badge-pill badge-info">
-                            <%= session.cart.totalQty %></span>
+                            <%= (session.cart)?session.cart.totalQty:0 %></span>
                     </a>
                 </li>
                 <% if(user){%>

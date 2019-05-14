@@ -6,7 +6,6 @@ router.get("/", (req, res) => {
   Product.find((err, products) => {
     res.render("shop", {
       user: req.user,
-      home: "",
       shop: "active",
       products: products
     });
@@ -16,10 +15,8 @@ router.get("/", (req, res) => {
 router.get('/add-to-cart/:id', (req, res) => {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
-    console.log("created cart");
     Product.findById(productId, (err, product) => {
        if (err) {
-          console.log(err);
            return res.redirect('/shop');
        }
         cart.add(product, product.id);
