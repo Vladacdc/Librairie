@@ -1,19 +1,28 @@
+<div class="row mt-5">
 <% for(var i=0; i < products.length; i++) {%>
-    <div class="row">
-        <% for(var j=0; j < products[i][j].length; j++) {%>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%= products[i][j].imagePath %>" alt="..." class="img-responsive">
-                    <div class="caption">
-                        <h3><%= products[i][j].title %></h3>
-                        <p class="description"><%= products[i][j].description %></p>
-                        <div class="clearfix">
-                            <div class="price pull-left">$<%= products[i][j].price %></div>
-                            <a href="/add-to-cart/<%= products[i][j]._id %>" class="btn btn-success pull-right" role="button">Add to Shopping Cart</a>
-                        </div>
-                    </div>
-                </div>
+    <% for(var j=0; j < products[i].length; j++) {%>
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <a href="#"><img class="card-img-top img-responsive" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a href="#">
+                        <%= products[i][j].title %>
+                    </a>
+                </h4>
+                <p class="card-text">
+                    <%= products[i][j].description %>
+                </p>
             </div>
-        <% } %>
+            <div class="card-footer d-flex align-items-center ">
+                <small class="text-muted mr-auto">★ ★ ★ ★ ☆</small>
+                <span class="">
+                    <%= products[i][j].price %>$
+                </span>
+                <button type="button" class="btn btn-sm btn-success">Buy</button>
+            </div>
+        </div>
     </div>
+    <% } %>
 <% } %>
+</div>

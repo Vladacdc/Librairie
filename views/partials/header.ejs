@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-sm-0">
-  <a class="navbar-brand mr-md-5 mylogo" href="#">Librairie</a>
-  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand mr-md-5 mylogo" href="/">Librairie</a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDrop">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="navbar-collapse collapse " id="navbarsExample03">
+  <div class="navbar-collapse collapse " id="navbarDrop">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link h4" href="/">Home</a>
@@ -29,15 +29,19 @@
         </li>
       </ul>
       <div class="mx-1 mx-sm-0">
-        <img class="rounded-circle profile-pic" src="<%= user.image %>" alt="Profile">
+        <img class="rounded-circle profile-pic border" src="<%= user.image %>" alt="Profile">
       </div>
     </div>
     <% } else {%>
-    <div class="navbar-nav">
-      <a href="/auth/google" class="nav-link h6">
-        Sign in<i class="fas fa-sign-in-alt"></i>
-      </a>
-    </div>
+      <div class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a href="/auth/google" class="nav-link h6">
+                  Sign in<i class="fas fa-sign-in-alt"></i>
+              </a>
+          </li>
+        </ul>
+      </div>
     <% } %>
   </div>
 </nav>
