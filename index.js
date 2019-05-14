@@ -25,6 +25,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req,res,next)=>{
+    res.locals.session=req.session;
+    next();
+});
+
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/mdbootstrap', express.static(path.join(__dirname, 'node_modules/mdbootstrap')));
 

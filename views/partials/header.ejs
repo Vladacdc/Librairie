@@ -1,47 +1,56 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark py-sm-0">
-  <a class="navbar-brand mr-md-5 mylogo" href="/">Librairie</a>
-  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDrop">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark py-md-0">
+    <a class="navbar-brand mr-md-5 mylogo" href="/">Librairie</a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDrop">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="navbar-collapse collapse " id="navbarDrop">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= home %>">
-        <a class="nav-link h4" href="/">Home</a>
-      </li>
-      <li class="nav-item <%= shop %>">
-        <a class="nav-link h4" href="/shop/">Shop</a>
-      </li>
-    </ul>
-    <% if(user){%>
-    <div class="navbar-nav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link h6" href="#">
-            Cart<i class="fas fa-shopping-cart"></i>
-            <span class="align-text-bottom badge badge-pill badge-info">0</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link h6" href="/auth/logout">
-            Log out<i class="fas fa-sign-out-alt"></i>
-          </a>
-        </li>
-      </ul>
-      <div class="mx-1 mx-sm-0">
-        <img class="rounded-circle profile-pic border" src="<%= user.image %>" alt="Profile">
-      </div>
-    </div>
-    <% } else {%>
-      <div class="navbar-nav">
+    <div class="navbar-collapse collapse " id="navbarDrop">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a href="/auth/google" class="nav-link h6">
-                  Sign in<i class="fas fa-sign-in-alt"></i>
-              </a>
-          </li>
+            <li class="nav-item <%= home || '' %>">
+                <a class="nav-link h4 mb-0" href="/">Home</a>
+            </li>
+            <li class="nav-item <%= shop %>">
+                <a class="nav-link h4 mb-0" href="/shop/">Shop</a>
+            </li>
         </ul>
-      </div>
-    <% } %>
-  </div>
+        <% if(user){%>
+        <div class="navbar-nav pt-sm-1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link h6 mb-0" href="#">
+                        Cart<i class="fas fa-shopping-cart"></i>
+                        <span class="align-text-bottom badge badge-pill badge-info"><%= session.cart.totalQty %></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link h6 mb-0" href="/auth/logout">
+                        Log out<i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item mx-1 my-1 my-md-0">
+                    <ul class="list-inline d-flex justify-items-center">
+                        <li class="list-inline-item">
+                          <img class="rounded-circle profile-pic" src="<%= user.image %>">
+                        </li>
+                        <li class="list-inline-item nav-item">
+                            <a href="#" class="nav-link h6 mb-0 disabled">
+                                <%= user.username %>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <% } else {%>
+        <div class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/auth/google" class="nav-link h6 mb-0">
+                        Sign in<i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <% } %>
+    </div>
 </nav>
