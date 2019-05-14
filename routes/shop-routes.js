@@ -10,6 +10,8 @@ router.get("/", (req, res) => {
     }
     res.render("shop", {
       user: req.user,
+      home: "",
+      shop: "active",
       products: productChunks
     });
   });

@@ -45,7 +45,9 @@ app.use("/shop", shopRoutes);
 //root route
 app.get("/", (req, res) => {
   res.render("index", {
-    user: req.user
+    user: req.user,
+    home: "active",
+    shop: ""
   });
 });
 
