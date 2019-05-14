@@ -1,28 +1,26 @@
 <div class="row mt-5">
 <% for(var i=0; i < products.length; i++) {%>
-    <% for(var j=0; j < products[i].length; j++) {%>
     <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
             <a href="#"><img class="card-img-top img-responsive" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <a href="#">
-                        <%= products[i][j].title %>
+                        <%= products[i].title %>
                     </a>
                 </h4>
                 <p class="card-text">
-                    <%= products[i][j].description %>
+                    <%= products[i].description %>
                 </p>
             </div>
             <div class="card-footer d-flex align-items-center ">
                 <small class="text-muted mr-auto">★ ★ ★ ★ ☆</small>
                 <span class="">
-                    <%= products[i][j].price %>$
+                    <%= products[i].price %>$
                 </span>
                 <button type="button" class="btn btn-sm btn-success">Buy</button>
             </div>
         </div>
     </div>
-    <% } %>
 <% } %>
 </div>
