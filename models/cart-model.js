@@ -37,11 +37,10 @@ module.exports = function Cart(oldCart) {
       this.totalPrice-=storedItem.price;
       this.totalQty-=storedItem.qty;
 
-      storedItem.qty=newQty;
+      storedItem.qty=newQty*1;
       storedItem.price=storedItem.item.price * storedItem.qty
 
-      this.totalQty+=storedItem.qty;
+      this.totalQty+= storedItem.qty;
       this.totalPrice+=storedItem.price;
-
     };
 };
