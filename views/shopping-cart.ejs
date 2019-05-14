@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head")%>
+
+<body>
+  <%- include("partials/header")%>
+  <!--  -->
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">YOUR CART</h1>
+    </div>
+  </section>
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-stripped table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <!-- <th scope="col">Available</th> -->
+                <th scope="col" class="text-center">Quantity</th>
+                <th scope="col" class="text-right">Price</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(products) {%>
+              <% for(var i=0; i < products.length; i++) { %>
+              <tr>
+                <td class="align-middle">
+                  <%= products[i].item.title %>
+                </td>
+                <!-- <td>In stock</td> -->
+                <td class="align-middle"><input class="form-control" type="text" value="<%= products[i].qty %>" min="1"></td>
+                <td class="text-right align-middle">
+                  <%= products[i].item.price %>$
+                </td>
+                <td class="text-right align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+              </tr>
+              <% } %>
+              <% } else { %>
+              <!--  -->
+              <% } %>
+              <tr>
+                <td></td>
+                <td class="text-right">
+                  <h5 class="font-weight-bold">Total:</h5>
+                </td>
+                <td class="text-right">
+                  <h5 class="font-weight-bold">
+                    <%= (locals.totalPrice)?totalPrice:0 %>$</h5>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-2">
+      <div class="row d-flex align-items-center ">
+        <div class="col-sm-12  col-md-6 my-md-auto my-2">
+          <a href="/shop">
+            <button class="btn btn-block btn-light">Continue Shopping</button>
+          </a>
+        </div>
+        <div class="col-sm-12 col-md-6 text-right">
+          <a href="#">
+            <button class="btn btn-lg btn-block btn-success text-uppercase <%= (!locals.products)?'disabled':'' %>">Checkout</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <%- include("partials/footer")%>
+</body>
+
+</html>

@@ -17,13 +17,13 @@
         <div class="navbar-nav pt-sm-1">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link h6 mb-0" href="#">
+                    <a class="nav-link h6 mb-0" href="/shop/shopping-cart">
                         Cart<i class="fas fa-shopping-cart"></i>
                         <span class="align-text-bottom badge badge-pill badge-info">
                             <%= (session.cart)?session.cart.totalQty:0 %></span>
                     </a>
                 </li>
-                <% if(user){%>
+                <% if(locals.user){%>
                 <li class="nav-item">
                     <a class="nav-link h6 mb-0" href="/auth/logout">
                         Log out<i class="fas fa-sign-out-alt"></i>

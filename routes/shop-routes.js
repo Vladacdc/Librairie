@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get('/add-to-cart/:id', (req, res) => {
+router.get("/add-to-cart/:id", (req, res) => {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
     Product.findById(productId, (err, product) => {
@@ -21,9 +21,16 @@ router.get('/add-to-cart/:id', (req, res) => {
        }
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(req.session.cart);
         res.redirect('/shop');
     });
+});
+
+router.get("/shopping-cart", (req, res) => {
+   if (!req.session.cart) {
+       return res.render("shopping-cart", {products: null});
+   }
+    var cart = new Cart(req.session.cart);
+    res.render("shopping-cart", {products: cart.generateArray(), user: req.user, totalPrice: cart.totalPrice});
 });
 
 module.exports = router;
