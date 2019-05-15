@@ -41,7 +41,7 @@ router.get("/add-to-cart/:id", (req, res) => {
   });
 });
 
-router.get("/shopping-cart", (req, res) => {
+router.get("/shopping-cart/cart", (req, res) => {
   if (!req.session.cart) {
     return res.render("shopping-cart", {
       products: null
@@ -55,9 +55,9 @@ router.get("/shopping-cart", (req, res) => {
   });
 });
 
-router.get("/remove-all", (req, res) => {
+router.get("/remove-all/all", (req, res) => {
   req.session.cart = new Cart({});
-  res.redirect("/shop/shopping-cart");
+  res.redirect('back');
 });
 
 router.get("/remove/:id", (req, res) => {
@@ -65,7 +65,7 @@ router.get("/remove/:id", (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   cart.remove(productId);
   req.session.cart = cart;
-  res.redirect("/shop/shopping-cart");
+  res.redirect('back');
 });
 
 router.post("/setQty/:id", (req, res) => {
@@ -76,7 +76,7 @@ router.post("/setQty/:id", (req, res) => {
   // console.log(cart);
   req.session.cart = cart;
 
-  res.redirect("/shop/shopping-cart");
+  res.redirect('back');
 });
 
 router.get("/product/:id", (req, res) => {
