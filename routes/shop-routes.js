@@ -14,7 +14,7 @@ router.get("/(:mode)?", (req, res) => {
   var pageNum = req.query.pageNum ? req.query.pageNum : 1;
   Product.paginate({}, {
     page: pageNum,
-    limit: 2,
+    limit: 3,
     sort: sort
   }).then((result) => {
     res.render("shop", {
