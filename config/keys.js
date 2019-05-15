@@ -12,3 +12,4 @@ module.exports = {
     cookieKey: "ydObPAL7LfhIcO0RqIpM"
   }
 };
+// {$and: [{ "price": { $gt: 20 }},{ "price": { $lt: 50 }}]}

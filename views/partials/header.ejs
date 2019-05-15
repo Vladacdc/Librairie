@@ -12,6 +12,11 @@
             <li class="nav-item <%= (locals.shop)?shop:'' %>">
                 <a class="nav-link h4 mb-0" href="/shop/">Shop</a>
             </li>
+            <% if(user.isAdmin){ %>
+            <li class="nav-item <%= (locals.admin)?admin:'' %>">
+                <a class="nav-link h4 mb-0" href="/admin/">Admin</a>
+            </li>
+            <%}%>
         </ul>
 
         <div class="navbar-nav pt-sm-1">

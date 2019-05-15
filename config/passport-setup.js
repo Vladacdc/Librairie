@@ -30,7 +30,8 @@ passport.use(
           user = new User({
             username: profile.displayName,
             googleId: profile.id,
-            image: profile._json.picture
+            image: profile._json.picture,
+            isAdmin: false
           });
           user.save((err, user) => {
             if (err) console.log(err);
