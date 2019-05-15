@@ -1,5 +1,5 @@
-<nav class="d-flex align-items-center">
-    <ul class="pagination justify-content-center mb-0">
+<nav class="row">
+    <ul class="col-md pagination justify-content-center mb-0">
         <% if(page!=1) { %>
         <li class="page-item d-flex align-items-center">
             <a class="page-link" href="<%= fullUrl %>?pageNum=<%= page*1-1 %>">Previous</a>
@@ -17,8 +17,8 @@
         <% } %>
     </ul>
 
-    <form class="form ml-auto form-inline" method="get">
-        <input type="number" class="form-control" name="pageNum" value="<%= page %>" size="1" min="1" max="<%= pages %>" />
-        <input type="submit" class="btn btn-sm btn-primary" value="Go To" name="button" />
+    <form class="form ml-auto form-inline col-md justify-content-center" method="get">
+        <input id="pageNum" type="number" class="form-control" name="pageNum" value="<%= page %>" size="1" min="1" max="<%= pages %>" />
+        <input type="submit" class="btn btn-sm btn-primary" value="Go To"/>
     </form>
 </nav>
