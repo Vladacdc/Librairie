@@ -8,6 +8,8 @@ const cookieSession = require("cookie-session");
 const passport = require('passport');
 const path = require('path');
 const shopRoutes = require('./routes/shop-routes');
+const adminRoutes = require('./routes/admin-routes');
+
 
 var app = express();
 
@@ -53,6 +55,14 @@ mongoose.connect(
 //set up routes
 app.use("/auth", authRoutes);
 app.use("/shop", shopRoutes);
+app.use("/admin", (req, res, next) => {
+  if (!req.user || !req.user.isAdmin) {
+    res.redirect("/");
+  } else {
+    console.log('here');
+    next();
+  }
+}, adminRoutes);
 
 //root route
 app.get("/", (req, res) => {
