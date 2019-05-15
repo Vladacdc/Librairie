@@ -17,11 +17,11 @@ router.get("/add-to-cart/:id", (req, res) => {
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   Product.findById(productId, (err, product) => {
     if (err) {
-      return res.redirect('/shop');
+      return res.redirect('back');
     }
     cart.add(product, product.id);
     req.session.cart = cart;
-    res.redirect('/shop');
+    res.redirect('back');
   });
 });
 
@@ -63,5 +63,17 @@ router.post("/setQty/:id", (req, res) => {
   res.redirect("/shop/shopping-cart");
 });
 
+router.get("/product/:id", (req, res) => {
+  var productId = req.params.id;
+  Product.findById(productId, (err, product) => {
+    if (err) {
+      return res.redirect('/shop');
+    }
+    res.render("product", {
+      product: product,
+      user: req.user
+    });
+  });
+});
 
 module.exports = router;

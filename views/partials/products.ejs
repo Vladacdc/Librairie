@@ -5,7 +5,7 @@
             <a href="#"><img id="product-img" class="card-img-top" src="<%= products[i].imagePath%>" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
-                    <a href="#">
+                    <a href="/shop/product/<%= products[i]._id %>">
                         <%= products[i].title %>
                     </a>
                 </h4>
@@ -14,8 +14,8 @@
                 </p>
             </div>
             <div class="card-footer d-flex align-items-center ">
-                <small class="text-muted mr-auto">★ ★ ★ ★ ☆</small>
-                <span class="">
+                <!-- <small class="text-muted mr-auto">★ ★ ★ ★ ☆</small> -->
+                <span class="mr-auto">
                     <%= products[i].price %>$
                 </span>
                 <a href="/shop/add-to-cart/<%= products[i]._id %>">

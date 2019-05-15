@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<%- include("partials/head")%>
+
+<body>
+  <%- include("partials/header")%>
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+
+        <div class="card my-4">
+          <img class="card-img-top img-fluid" src="<%= product.imagePath%>" alt="">
+          <div class="card-body">
+            <h3 class="card-title">
+              <%= product.title%>
+            </h3>
+            <div class="d-flex align-items-center">
+              <h4 class="mb-0 mr-auto">
+                <%= product.price%>$
+              </h4>
+              <a href="/shop/add-to-cart/<%= product._id %>">
+                <button class="btn btn-success">
+                  Buy<i class="fas fa-cart-arrow-down"></i>
+                </button>
+              </a>
+            </div>
+            <p class="card-text">
+              <%= product.description%>
+            </p>
+          </div>
+        </div>
+        <!--  -->
+        <%- include("partials/comments") %>
+        <!--  -->
+      </div>
+    </div>
+  </div>
+  <%- include("partials/footer")%>
+
+</body>
+
+</html>
