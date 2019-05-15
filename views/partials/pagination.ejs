@@ -1,0 +1,24 @@
+<nav class="d-flex align-items-center">
+    <ul class="pagination justify-content-center mb-0">
+        <% if(page!=1) { %>
+        <li class="page-item d-flex align-items-center">
+            <a class="page-link" href="/shop/?pageNum=<%= page*1-1 %>">Previous</a>
+        </li>
+        <% }%>
+        <li class="page-item d-flex align-items-center">
+            <a class="page-link" href="/shop/?pageNum= <%= page %> ">
+                <%= page %>
+            </a>
+        </li>
+        <% if(page!=pages) { %>
+        <li class="page-item d-flex align-items-center">
+            <a class="page-link" href="/shop/?pageNum=<%= page*1+1 %>">Next</a>
+        </li>
+        <% } %>
+    </ul>
+
+    <form class="form ml-auto form-inline" action="/shop/" method="get">
+        <input type="number" class="form-control" name="pageNum" value="<%= page %>" size="1" min="1" max="<%= pages %>" />
+        <input type="submit" class="btn btn-sm btn-primary" value="Go To" name="button" />
+    </form>
+</nav>

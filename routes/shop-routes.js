@@ -2,12 +2,18 @@ const router = require('express').Router();
 const Product = require('../models/product-model');
 const Cart = require('../models/cart-model');
 
-router.get("/", (req, res) => {
-  Product.find((err, products) => {
+router.get("/(:id)?", (req, res) => {
+  var pageNum = req.query.pageNum ? req.query.pageNum : 1;
+  Product.paginate({}, {
+    page: pageNum,
+    limit: 2,
+  }).then((result) => {
     res.render("shop", {
       user: req.user,
       shop: "active",
-      products: products
+      products: result.docs,
+      pages: result.pages,
+      page: result.page
     });
   });
 });
