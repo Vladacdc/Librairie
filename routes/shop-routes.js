@@ -2,18 +2,28 @@ const router = require('express').Router();
 const Product = require('../models/product-model');
 const Cart = require('../models/cart-model');
 
-router.get("/(:id)?", (req, res) => {
+router.get("/(:mode)?", (req, res) => {
+  var mode = req.params.mode? req.params.mode: 'default';
+  var sort={};
+  if(mode=='priceUp'){
+    sort={price:1};
+  }else if (mode=='priceDown') {
+    sort={price:-1};
+  }
+
   var pageNum = req.query.pageNum ? req.query.pageNum : 1;
   Product.paginate({}, {
     page: pageNum,
     limit: 2,
+    sort: sort
   }).then((result) => {
     res.render("shop", {
       user: req.user,
       shop: "active",
       products: result.docs,
       pages: result.pages,
-      page: result.page
+      page: result.page,
+      fullUrl: req.originalUrl.split('?')[0]
     });
   });
 });
