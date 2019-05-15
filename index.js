@@ -59,7 +59,6 @@ app.use("/admin", (req, res, next) => {
   if (!req.user || !req.user.isAdmin) {
     res.redirect("/");
   } else {
-    console.log('here');
     next();
   }
 }, adminRoutes);
